@@ -300,7 +300,7 @@ def plot_continent_and_country_data(data_type, continent):
     st.plotly_chart(fig)
 
 # Streamlit app for continent and country trends
-st.title('Migratory Movements Analysis by Continent')
+st.header('Migratory Movements Analysis by Continent')
 
 # Interactive dropdown for data type selection
 data_type = st.selectbox('Select Data Type:', ['Immigration', 'Emigration', 'Balance'], key='data_type_2')
@@ -317,28 +317,28 @@ year = st.selectbox('Select Year:', [str(year) for year in range(1995, 2023)], k
 data_type_treemap = st.selectbox('Select Data Type for Treemap:', ['Immigration', 'Emigration', 'Balance'], key='data_type_3')
 plot_treemap(year, data_type_treemap)
 
-# Streamlit app for total population calculation
-st.title('Total Population Calculation')
-st.markdown('*Note: Suggested start year to calculate terminal population is 1996. Approximation, likely unreliable.*') 
+# # Streamlit app for total population calculation
+# st.header('Total Population Calculation')
+# st.markdown('*Note: Suggested start year to calculate terminal population is 1996. Approximation, likely unreliable.*') 
 
-# Interactive widgets for total population calculation
-continent_pop = st.selectbox('Select Continent:', data['Continent'].unique(), key='continent_dropdown')
+# # Interactive widgets for total population calculation
+# continent_pop = st.selectbox('Select Continent:', data['Continent'].unique(), key='continent_dropdown')
 
-# Update countries based on selected continent
-countries = data[data['Continent'] == continent_pop]['Nationality'].unique()
-country_pop = st.selectbox('Select Country:', countries, key='country_dropdown')
+# # Update countries based on selected continent
+# countries = data[data['Continent'] == continent_pop]['Nationality'].unique()
+# country_pop = st.selectbox('Select Country:', countries, key='country_dropdown')
 
-start_year = st.selectbox('Select Start Year:', [str(year) for year in range(1996, 2023)], key='start_year_dropdown')
-end_year = st.selectbox('Select End Year:', [str(year) for year in range(1996, 2023)], index=len(range(1996, 2023))-1, key='end_year_dropdown')
+# start_year = st.selectbox('Select Start Year:', [str(year) for year in range(1996, 2023)], key='start_year_dropdown')
+# end_year = st.selectbox('Select End Year:', [str(year) for year in range(1996, 2023)], index=len(range(1996, 2023))-1, key='end_year_dropdown')
 
-# Calculate initial population
-initial_population = calculate_initial_population(data, continent_pop, country_pop)
-st.write(f'Initial Population (Balance 1995): {initial_population:,}')
+# # Calculate initial population
+# initial_population = calculate_initial_population(data, continent_pop, country_pop)
+# st.write(f'Initial Population (Balance 1995): {initial_population:,}')
 
-# Calculate total population on button click
-if st.button('Calculate Total Population'):
-    total_population = calculate_total_population(data, continent_pop, country_pop, start_year, end_year, initial_population)
-    st.write(f'Total population of {country_pop} including initial population: {total_population:,.0f}')
+# # Calculate total population on button click
+# if st.button('Calculate Total Population'):
+#     total_population = calculate_total_population(data, continent_pop, country_pop, start_year, end_year, initial_population)
+#     st.write(f'Total population of {country_pop} including initial population: {total_population:,.0f}')
 
 # Plot total by continent for two selected years
 st.header('Total Migration Movements by Continent for Two Selected Years')
