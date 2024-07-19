@@ -247,6 +247,7 @@ def calculate_total_population(data, continent, country, start_year, end_year, i
 
 # Streamlit app
 st.title('Migratory Movements Analysis NL')
+st.markdown('Migratory movements analysis for the Netherlands, July 2024 with data up until 2022.')
 st.markdown('*Note: Figures exclude Migration background = Dutch background*') 
 
 # Data type selection
