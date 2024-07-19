@@ -32,7 +32,7 @@ def plot_total_data(data_type):
     total_data_per_year = get_total_data_per_year(filtered_data)
     fig = px.line(total_data_per_year, x=total_data_per_year.index, y=total_data_per_year.values,
                   labels={'index': 'Year', 'y': f'Number of people - {data_type.lower()} '}, 
-                  title=f'Migratory movements in the Netherlands (2010-2023) - {data_type}')
+                  title=f'Migratory movements in the Netherlands (2010-2022) - {data_type}')
     st.plotly_chart(fig)
 
 # Data trends by continent
@@ -42,7 +42,7 @@ def plot_continent_data(data_type):
     fig = go.Figure()
     for continent in continent_data.index:
         fig.add_trace(go.Scatter(x=continent_data.columns, y=continent_data.loc[continent], mode='lines+markers', name=continent))
-    fig.update_layout(title=f'Migratory movements trends by continent (2010-2023) - {data_type}', 
+    fig.update_layout(title=f'Migratory movements trends by continent (2010-2022) - {data_type}', 
                       xaxis_title='Year', yaxis_title=f'Number of people - {data_type.lower()}')
     st.plotly_chart(fig)
 
@@ -55,7 +55,7 @@ def plot_nationality_data(data_type, nationalities):
         fig.add_trace(go.Scatter(x=nationality_data.columns[3:], 
                                  y=nationality_data[nationality_data['Nationality'] == nationality].iloc[0, 3:], 
                                  mode='lines+markers', name=nationality))
-    fig.update_layout(title=f'Migratory movements trends by selected nationalities (2010-2023) - {data_type}', 
+    fig.update_layout(title=f'Migratory movements trends by selected nationalities (2010-2022) - {data_type}', 
                       xaxis_title='Year', yaxis_title=f'Number of people - {data_type.lower()}')
     st.plotly_chart(fig)
 
@@ -292,7 +292,7 @@ def plot_continent_and_country_data(data_type, continent):
         ))
     
     fig.update_layout(
-        title=f'Migratory movements trends for {continent} (2010-2023) - {data_type}', 
+        title=f'Migratory movements trends for {continent} (2010-2022) - {data_type}', 
         xaxis_title='Year', 
         yaxis_title=f'Number of people - {data_type.lower()}',
         hovermode='closest'
